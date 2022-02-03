@@ -17,7 +17,7 @@
                 Edit
             </button>
 
-
+           
             <!--delete data-->
             <form method="POST" action="{{ route('outlet.destroy', $o->id) }}" style="display:inline" class="d-inline">
                 {{ csrf_field() }}
