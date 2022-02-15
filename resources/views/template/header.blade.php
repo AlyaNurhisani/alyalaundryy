@@ -25,9 +25,10 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ asset('assets') }}/index3.html" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      <form action="/logout" method="post">
+                @csrf
+              <button type="submit" class="dropdown-item">Logout</button>
+              </form>
     </ul>
 
     <!-- Right navbar links -->
@@ -154,93 +155,26 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-warning elevation-4">
+  <aside class="main-sidebar sidebar-warning elevation-4">
     <!-- Brand Logo -->
     <a href="{{ asset('assets') }}/index3.html" class="brand-link">
       <img src="{{ asset('assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light"> Planet Bimasakti</span>
+      <span class="brand-text font-weight-bold"> LAUNDRY</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('assets') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alya</a>
-        </div>
-      </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    <p>{{ auth()->user()->role }}</p>
+    @if (auth()->user()->role == 'admin')
+       @include('template.sidebar-admin')
+    @elseif (auth()->user()->role == 'kasir')
+       @include('template.sidebar-kasir')
+    @elseif (auth()->user()->role == 'owner')
+       @include('template.sidebar-owner')
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('outlet') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Outlet</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('paket_cucian') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Paket Cucian</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('member') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Member</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+    @endif
 
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Transaksi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -250,12 +184,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nyeseh cepat dan mudah</h1>
+          <span class="brand-text font-weight-bold"> Nyeseh cepat dan mudah</span>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              
             </ol>
           </div>
         </div>

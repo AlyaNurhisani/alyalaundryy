@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planet Laundry | Log in</title>
+  <title>Planet Bimasakti | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('assets') }}/index2.html"><b>Admin</b>LTE</a>
+    <a href="{{ asset('assets') }}/index2.html"><b>Log</b>IN</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
