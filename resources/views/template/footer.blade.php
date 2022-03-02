@@ -21,5 +21,9 @@
 <script src="{{ asset('assets') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets') }}/dist/js/demo.js"></script>
+<script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTable.js"></script>
+{{-- <script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTable.min.js"></script> --}}
+
+@stack('scripts')
 </body>
 </html>

@@ -19,7 +19,7 @@
                 <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#formInputModal{{ $p->id }}">
                     Edit
                 </button>
-
+ 
 
                 <!--delete data-->
                 <form method="POST" action="{{ route('paket_cucian.destroy', $p->id) }}" style="display:inline" class="d-inline">

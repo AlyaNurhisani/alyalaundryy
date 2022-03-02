@@ -12,12 +12,20 @@
             @csrf
             <div id="method"> </div>
             <div class="card-body">
-                    <div class="form-group">
+              <div class="form-group">
+                <label for="id_outlet">ID OUTLET</label>
+                <input type = "text" class="form-control col-sm-5" id="id_outlet" name="id_outlet">
+                  @foreach ($outlet as $o)
+                  <option value="{{ $o->id }}">{{ $o->nama }}</option>
+                  @endforeach
+                </select>
+              </div>
+                    {{-- <div class="form-group">
                         <label for="id_outlet"> ID OUTLET</label>
                         <input type="text" class="form-control col-sm-10" id="id_outlet" placeholder="ID OUTLET" name="id_outlet">
-                    </div>
+                    </div> --}}
 
-                    
+
                     <div class="form-group">
                         <label for="jenis">Jenis</label>
                         <select class="form-control col-sm-5" id="jenis" name="jenis">
@@ -28,7 +36,7 @@
                             <option value="lainnya">Lainnya</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="nama_paket"> Nama Paket</label>
                         <input type="text" class="form-control col-sm-10" id="nama_paket" placeholder="Nama Paket" name="nama_paket">

@@ -54,7 +54,22 @@
                   <p>Member</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ url('user') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ url('barang_inventaris') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>BarangInventaris</p>
+                </a>
+              </li>
+
             </ul>
+
           </li>
         </ul>
       </nav>
@@ -64,6 +79,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -71,7 +87,13 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('transaksi') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>transaksi</p>
+                </a>
+              </li>
         </ul>
       </nav>
 

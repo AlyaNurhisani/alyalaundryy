@@ -42,6 +42,12 @@
           </div>
         </div>
         <div class="input-group mb-3">
+            <select name="role" class="form-control col-sm-9" id="role" placeholder="Role" name="role">
+                <option value="admin">Admin</option>
+                <option value="kasir">Kasir</option>
+                <option value="owner">Owner</option>
+            </select>
+        <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">

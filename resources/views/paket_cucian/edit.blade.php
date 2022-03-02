@@ -13,7 +13,7 @@
             <div id="method"> </div>
             <div class="card-body">
                     <div class="form-group">
-                        <label for="id_outlet"> ID OUTLET</label>
+                        <label for="id_outlet"> Id outlet</label>
                         <input type="text" class="form-control " value="{{ $p->id_outlet }}" id="id_outlet" placeholder="ID OUTLET" name="id_outlet">
                     </div>
 

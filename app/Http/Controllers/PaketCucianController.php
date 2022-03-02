@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\paket_cucian;
+use App\Exports\PaketExport;
 use App\Http\Requests\Storepaket_cucianRequest;
 use App\Http\Requests\Updatepaket_cucianRequest;
+use App\Models\outlet;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class PaketCucianController extends Controller
 {
@@ -16,6 +20,7 @@ class PaketCucianController extends Controller
     public function index()
     {
         $data['paket_cucian'] = Paket_Cucian::all();
+        $data['outlet'] = outlet::all();
         return view('paket_cucian/index', $data);
     }
 
@@ -26,7 +31,7 @@ class PaketCucianController extends Controller
      */
     public function create()
     {
-    //
+        //
     }
 
     /**
@@ -39,13 +44,13 @@ class PaketCucianController extends Controller
     {
         $validated = $request->validate([
             'id_outlet' => 'required',
-             'nama_paket' => 'required',
-             'jenis' => 'required',
-             'harga' => 'required'
-         ]);
+            'nama_paket' => 'required',
+            'jenis' => 'required',
+            'harga' => 'required'
+        ]);
 
         $input = Paket_Cucian::create($validated);
-        if($input)return redirect('paket_cucian')->with('succes','Data berhasil diinput');
+        if ($input) return redirect('paket_cucian')->with('succes', 'Data berhasil diinput');
     }
 
     /**
@@ -89,10 +94,10 @@ class PaketCucianController extends Controller
 
 
         Paket_Cucian::where('id', $paket_cucian->id)
-                ->update($ValidatedData);
+            ->update($ValidatedData);
 
 
-        return redirect('paket_cucian')->with('succes','Data Has Been Updated!');
+        return redirect('paket_cucian')->with('succes', 'Data Has Been Updated!');
     }
 
     /**
@@ -104,6 +109,11 @@ class PaketCucianController extends Controller
     public function destroy(paket_cucian $paket_cucian)
     {
         Paket_Cucian::destroy($paket_cucian->id);
-        return redirect('paket_cucian')->with('succes'.'Data Has Been Deleted!');
+        return redirect('paket_cucian')->with('succes' . 'Data Has Been Deleted!');
+    }
+
+    public function exportData()
+    {
+        return Excel::download(new PaketExport, 'Paket.xlsx');
     }
 }

@@ -163,9 +163,23 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+        <div class="sidebar">
+            @include('template.sidebar-admin')
 
-    <p>{{ auth()->user()->role }}</p>
+            {{-- @if (auth()->user()->role == 'admin')
+                @include('templates.sidebar-admin')
+            @elseif (auth()->user()->role == 'kasir')
+                @include('templates.sidebar-kasir')
+            @elseif (auth()->user()->role == 'owner')
+                @include('templates.sidebar-owner')
+            @elseif(!auth())
+                <p>belomlogin</p>
+            @endif --}}
+
+            {{-- {{ auth()->user()->role }} --}}
+            </div>
+
+    {{-- <p>{{ auth()->user()->role }}</p>
     @if (auth()->user()->role == 'admin')
        @include('template.sidebar-admin')
     @elseif (auth()->user()->role == 'kasir')
@@ -173,7 +187,7 @@
     @elseif (auth()->user()->role == 'owner')
        @include('template.sidebar-owner')
 
-    @endif
+    @endif --}}
 
   </aside>
 
@@ -189,7 +203,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              
+
             </ol>
           </div>
         </div>

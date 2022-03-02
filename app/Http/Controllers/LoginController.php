@@ -17,25 +17,25 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+            'role' => ['required'],
             ]);
-            
-            if (Auth::attempt($credentials)){ 
+
+            if (Auth::attempt($credentials)){
                 $request->session()->regenerate();
-            
-            if(Auth::user()->role == 'admin'){ 
+            if(Auth::user()->role == 'admin'){
                 return redirect()->route('a.home');
-            }else if(Auth::user()->role == 'kasir'){ 
+            }else if(Auth::user()->role == 'kasir'){
                 return redirect()->route('k.home');
-            }else if(Auth::user()->role == 'owner'){ 
+            }else if(Auth::user()->role == 'owner'){
                 return redirect()->route('o.home');
-            
+
             }
             return redirect()->intended( 'home');
         }
 
             return back()->withErrors([
                 'email' => 'Username atau password salah.',
-            
+
         ]);
     }
 
@@ -44,7 +44,7 @@ public function logout(Request $request){
     $request->session()->invalidate();
     $request->session()->regenerateToken();
     return redirect('/login');
-    
+
 }
 
 }
