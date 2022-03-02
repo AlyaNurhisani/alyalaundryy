@@ -55,8 +55,7 @@ class PaketExport implements FromCollection, WithHeadings, WithEvents
                 $event->sheet->mergeCells('A1:G1');
                 $event->sheet->setCellValue('A1', 'DATA PAKET CUCIAN');
                 $event->sheet->getStyle('A1')->getFont()->setBold(true);
-                // $event->sheet->getStyle('A1')->getAligment()->setHorizontal;
-                // (\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                $event->sheet->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
             }
         ];
     }

@@ -90,6 +90,7 @@
                 subtotal += Number(harga)
                 let pajak = 0.35 * Number(subtotal);
                 $('#pajak-harga').text(pajak)
+                $('#pajak-persen').val(pajak)
                 total = subtotal + Number($('#pajak-harga').val()) + Number(pajak)
                 $('#subtotal').text(Number(subtotal))
                 $('#total').text(total)
