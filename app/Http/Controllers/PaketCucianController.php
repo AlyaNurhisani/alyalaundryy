@@ -6,7 +6,9 @@ use App\Models\paket_cucian;
 use App\Exports\PaketExport;
 use App\Http\Requests\Storepaket_cucianRequest;
 use App\Http\Requests\Updatepaket_cucianRequest;
+use App\Imports\PaketImport;
 use App\Models\outlet;
+use GuzzleHttp\Psr7\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -115,5 +117,13 @@ class PaketCucianController extends Controller
     public function exportData()
     {
         return Excel::download(new PaketExport, 'Paket.xlsx');
+    }
+
+    public function importData()
+    {
+        request()->file('file')->move('temp', request()->file('file')->getClientOriginalName());
+        Excel::import(new PaketImport, public_path('temp/' . request()->file('file')->getClientOriginalName()));
+
+        return redirect('paket_cucian')->with('success', 'All good!');
     }
 }

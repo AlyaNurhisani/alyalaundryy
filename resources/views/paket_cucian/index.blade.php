@@ -13,7 +13,34 @@
                     <i class="fa fa-file-excel"></i>Export
                 </a>
 
+                <button type="button" class="btn btn-warning text-light" data-toggle="modal"
+                    data-target="#ModalImportPaket"><i class="fas fa-file-excel"></i>
+                    Import
+                </button>
 
+                <!-- Modal -->
+                <div class="modal fade" id="ModalImportPaket" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="ModalImportPaketLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header text-dark">
+                                <h3 class="modal-title" id="ModalImportPaketLabel">Import Data Paket</h3>
+                                {{-- <button type="button" class="btn-close" data-dismiss="modal"
+                                    aria-label="Close">x</button> --}}
+                            </div>
+                            <div class="modal-body text-dark">
+                                <form action="{{ route('import-Paket') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="file" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-warning" style="color: white">Upload</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div style="margin-top:20px">
 
                     @if (session('success'))

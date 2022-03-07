@@ -91,7 +91,7 @@
                 let pajak = 0.35 * Number(subtotal);
                 $('#pajak-harga').text(pajak)
                 $('#pajak-persen').val(pajak)
-                total = subtotal + Number($('#pajak-harga').val()) + Number(pajak)
+                total = subtotal + Number($('#pajak-harga').val()) + Number(pajak) + Number($('#biaya_tambahan').val())
                 $('#subtotal').text(Number(subtotal))
                 $('#total').text(total)
             }
@@ -117,7 +117,7 @@
                 let count = qty * harga;
                 let pajak = 0.35 * Number(subtotal);
                 subtotal = subtotal - subTotalAwal + count
-                total = subtotal + Number($('#pajak-harga').val()) + Number(pajak)
+                total = subtotal + Number($('#pajak-harga').val()) + Number(pajak) + Number($('#biaya_tambahan').val())
                 $(a).closest('tr').find('.subTotal').text(count)
                 $('#subtotal').text(subtotal)
                 $('#total').text(total)

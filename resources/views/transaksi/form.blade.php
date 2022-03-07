@@ -102,7 +102,8 @@
 
                     <tr>
                         <td colspan="3" align="right">Biaya Tambahan</td>
-                        <td><input type="number" name="biaya_tambahan" style="width:140px" value="0"></td>
+                        <td><input id="biaya_tambahan" type="number" name="biaya_tambahan" style="width:140px"
+                                value="0"></td>
                     </tr>
                     <tr style="background:black;color:white;font-weight:bold;font-size:lem">
                         <td colspan="3" align="right">Total bayar akhir</td>
@@ -151,7 +152,8 @@
                                 <td> {{ $b->jenis_kelamin }} </td>
                                 <td> {{ $b->tlp }} </td>
                                 <td> {{ $b->alamat }} </td>
-                                <td><button class="pilihMemberBtn" type="button">Pilih</button></td>
+                                <td><button class="pilihMemberBtn btn btn-outline-primary" type="button">Pilih</button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

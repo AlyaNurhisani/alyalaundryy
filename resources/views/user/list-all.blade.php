@@ -35,9 +35,10 @@
                                     <form action="{{ url('user/' . $u->id) }}" method="post" class="d-inline">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button class="badge bg-primary border-0"
-                                            onclick="return confirm('yakin mau di hapus?')"><i
-                                                class="ni ni-basket"></i></button>
+                                        <button class="btn delete-user" type="submit"> <i class="fa fa-trash"
+                                                style="color: red" onclick="return confirm('Yakin ingin dihapus?')">
+                                            </i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

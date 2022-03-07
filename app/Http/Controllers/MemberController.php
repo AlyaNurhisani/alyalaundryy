@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\member;
 use App\Http\Requests\StorememberRequest;
 use App\Http\Requests\UpdatememberRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MemberExport;
+use App\Imports\MemberImport;
 
 class MemberController extends Controller
 {
@@ -26,7 +29,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-       //
+        //
     }
 
     /**
@@ -46,7 +49,7 @@ class MemberController extends Controller
 
         $input = member::create($validated);
 
-        if($input) return redirect('member')->with('succses', 'data berhasil di input');
+        if ($input) return redirect('member')->with('succses', 'data berhasil di input');
     }
 
     /**
@@ -78,7 +81,7 @@ class MemberController extends Controller
      * @param  \App\Models\member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatememberRequest $request, member $member )
+    public function update(UpdatememberRequest $request, member $member)
     {
         $validatedData = $request->validate([
 
@@ -92,7 +95,7 @@ class MemberController extends Controller
         Member::where('id', $member->id)
             ->update($validatedData);
 
-            return redirect('member')->with('succes'.'Data Has Been Updated!');
+        return redirect('member')->with('succes' . 'Data Has Been Updated!');
     }
     /**
      * Remove the specified resource from storage.
@@ -100,11 +103,23 @@ class MemberController extends Controller
      * @param  \App\Models\member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(member $member )
+    public function destroy(member $member)
     {
         member::destroy($member->id);
         $member->delete();
-       return redirect('member')->with('succes'.'Data Has Been Deleted!');
+        return redirect('member')->with('succes' . 'Data Has Been Deleted!');
+    }
 
+    public function exportData()
+    {
+        return Excel::download(new MemberExport, 'Member.xlsx');
+    }
+
+    public function importData()
+    {
+        request()->file('file')->move('temp', request()->file('file')->getClientOriginalName());
+        Excel::import(new MemberImport, public_path('temp/' . request()->file('file')->getClientOriginalName()));
+
+        return redirect('member')->with('success', 'All good!');
     }
 }

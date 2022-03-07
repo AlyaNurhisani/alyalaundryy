@@ -34,6 +34,9 @@ Route::group(['prefix' => 'a', 'middleware' => ['isAdmin', 'auth']], function ()
     Route::get('transaksi', [TransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('users/export/', [PaketCucianController::class, 'exportData'])->name('export-Paket');
+    Route::post('Paket/import', [PaketCucianController::class, 'importData'])->name('import-Paket');
+    Route::get('Member/export', [MemberController::class, 'exportData'])->name('export-Member');
+    Route::post('Member/import', [MemberController::class, 'importData'])->name('import-Member');
 });
 
 Route::group(['prefix' => 'k', 'middleware' => ['isKasir', 'auth']], function () {
